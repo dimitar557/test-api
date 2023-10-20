@@ -9,7 +9,7 @@ pipeline {
                 git branch: "main",
                     changelog: false,
                     poll: true,
-                    url: https://github.com/dimitar557/test-api
+                    url: "https://github.com/dimitar557/test-api"
             }
         }
         stage("Clean") {
