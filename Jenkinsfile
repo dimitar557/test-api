@@ -34,13 +34,14 @@ pipeline {
                 }
             }
         }
-        stage("Quality Gate") {
-            steps {
-                timeout(time: 2, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+        // This will work if Jenkins and Sonar are in the cloud
+        //stage("Quality Gate") {
+            //steps {
+                //timeout(time: 2, unit: 'MINUTES') {
+                    //waitForQualityGate abortPipeline: true
+                //}
+            //}
+        //}
     }
     post {
         always {
