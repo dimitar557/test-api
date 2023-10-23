@@ -12,6 +12,21 @@ pipeline {
                     url: "https://github.com/dimitar557/test-api"
             }
         }
+        stage("Clean") {
+            steps {
+                bat mvn clean
+            }
+        }
+        stage("Test") {
+            steps {
+                bat "mvn test"
+            }
+        }
+        stage("Package") {
+            steps {
+                bat "mvn package -DskipTests"
+            }
+        }
         stage("Scan") {
             steps {
                 bat "mvn clean sonar:sonar -Dsonar.token=squ_f6d93f45a0d6faac1556c81d011063afbcb45bfc"
@@ -24,16 +39,6 @@ pipeline {
                 //}
             //}
         //}
-        stage("Test") {
-            steps {
-                bat "mvn test"
-            }
-        }
-        stage("Package") {
-            steps {
-                bat "mvn package -DskipTests"
-            }
-        }
     }
     post {
         always {
