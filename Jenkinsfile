@@ -39,6 +39,7 @@ pipeline {
                 classPattern: '**/build/classes/java/main',
                 sourcePattern: '**/src/main'
             )
+            deploy adapters: [tomcat9(path: '', url: 'http://localhost:8080')], contextPath: null, onFailure: false, war: '"**/*.war'
         }
     }
 }
