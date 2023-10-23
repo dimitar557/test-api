@@ -50,8 +50,7 @@ pipeline {
         }
         success {
             jacoco(
-                execPattern: '**/build/jacoco/*.exec',
-                classPattern: '**/build/classes/java/main',
+                execPattern: '**/jacoco.exec',
                 sourcePattern: '**/src/main'
             )
             deploy adapters: [tomcat9(path: '', url: 'http://localhost:8080')], contextPath: null, onFailure: false, war: '"**/demo-0.0.1-SNAPSHOT.war'
