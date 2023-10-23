@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class PostServiceTest {
+class PostServiceSum {
     @Mock
     private PostRepository postRepository;
     private PostService underTest;
