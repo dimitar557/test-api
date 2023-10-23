@@ -31,7 +31,7 @@ pipeline {
     post {
         always {
             archiveArtifacts allowEmptyArchive: true,
-                artifacts: "**/demo-1.0-SNAPSHOT.war"
+                artifacts: "**/demo-0.0.1-SNAPSHOT.war"
         }
         success {
             jacoco(
