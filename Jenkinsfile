@@ -12,21 +12,11 @@ pipeline {
                     url: "https://github.com/dimitar557/test-api"
             }
         }
-        stage("Scan") {
+        stage("Clean") {
             steps {
-                //bat "mvn clean"
-                withSonarQubeEnv(installationName: 'sonarqube') {
-                    bat "mvn clean sonar:sonar -Dsonar.token=squ_f6d93f45a0d6faac1556c81d011063afbcb45bfc"
-                }
+                bat "mvn clean"
             }
         }
-        //stage("Quality Gate") {
-            //steps {
-                //timeout(time: 2, unit: 'MINUTES') {
-                    //waitForQualityGate abortPipeline: true
-                //}
-            //}
-        //}
         stage("Test") {
             steps {
                 bat "mvn test"
@@ -37,6 +27,20 @@ pipeline {
                 bat "mvn package -DskipTests"
             }
         }
+        stage("Scan") {
+            steps {
+                withSonarQubeEnv(installationName: 'sonarqube') {
+                    bat "mvn sonar:sonar -Dsonar.token=squ_f6d93f45a0d6faac1556c81d011063afbcb45bfc"
+                }
+            }
+        }
+        //stage("Quality Gate") {
+            //steps {
+                //timeout(time: 2, unit: 'MINUTES') {
+                    //waitForQualityGate abortPipeline: true
+                //}
+            //}
+        //}
     }
     post {
         always {
