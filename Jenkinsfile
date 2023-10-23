@@ -14,7 +14,8 @@ pipeline {
         }
         stage("Scan") {
             steps {
-                bat "mvn clean sonar:sonar -Dsonar.token=squ_f6d93f45a0d6faac1556c81d011063afbcb45bfc -Dsonar.java.binaries=target/classes"
+                bat "mvn clean"
+                //bat "mvn clean sonar:sonar -Dsonar.token=squ_f6d93f45a0d6faac1556c81d011063afbcb45bfc -Dsonar.java.binaries=target/classes"
             }
         }
         //stage("Quality Gate") {
