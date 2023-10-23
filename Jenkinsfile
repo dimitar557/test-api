@@ -33,5 +33,12 @@ pipeline {
             archiveArtifacts allowEmptyArchive: true,
                 artifacts: "**/demo-1.0-SNAPSHOT.jar"
         }
+        success {
+            jacoco(
+                execPattern: '**/build/jacoco/*.exec',
+                classPattern: '**/build/classes/java/main',
+                sourcePattern: '**/src/main'
+            )
+        }
     }
 }
