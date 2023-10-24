@@ -50,7 +50,7 @@ pipeline {
         }
         success {
             jacoco()
-            //deploy adapters: [tomcat9(path: '', url: 'http://localhost:8080')], contextPath: null, onFailure: false, war: '"**/demo-0.0.1-SNAPSHOT.war'
+            deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://localhost:8080')], contextPath: null, war: '**/*.war'
         }
     }
 }
